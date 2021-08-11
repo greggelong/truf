@@ -9,5 +9,5 @@ In this repo I am refactoring  code that was originally in a 1988
 
 paper on prolog and recursion. https://www.researchgate.net/publication/221536954_Teaching_recursion_using_fractals_in_Prolog
 
--[X] koch curve
--[X] cauliflower curve
+- [X] koch curve
+- [X] cauliflower curve
