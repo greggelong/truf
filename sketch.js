@@ -12,16 +12,24 @@ function setup() {
 }
 
 function draw() {
-  //background(220);
-  //sqr(greg,random(width),random(height), random(20,width-10));
-  //tree(greg,100, random(20,75))
-  //greg.right(random(360))
-  cauliflower(greg,15,300);
+  background(32)
+  // get the order number from mouseX cauliflower max 15, koch max 6
+  let cOrder = floor(map(mouseX,0,width,0,15,true));
+  let kOrder = floor(map(mouseX,0,width,0,6,true));
+  // reset the color and position of the gurtle for cauliflower
+  greg.clr = color(0,255,0)
+  greg.x = width/4;
+  greg.y = height/2;
+  greg.angle =0;
+  cauliflower(greg,cOrder,300);
+  
+  // reset the color and position of the gurtle for koch
   greg.clr = color(255,200,0);
+  greg.angle =0
   greg.x =0;
   greg.y =height/3;
-  koch(greg,5,600)
-  noLoop();
+  koch(greg,kOrder,600)
+  
 }
 
 function koch(t, order, size){
@@ -61,36 +69,4 @@ function cauliflower(t, order,size){
   
   
   
-}
-
-
-function sqr(obj, x,y, ln){
-  obj.x = x;
-  obj.y =y;
-  for (let i=0; i<4;i++){
-    obj.forward(ln)
-    obj.right(90)
-  }
-}
-
-
-function tree(t, size, angle){
-  //background(255);
-  // set the tree at the bottom
-
-
-  if (size < 2){
-     return;
-  }else{
-    // draw tree
-    t.forward(size);
-    t.right(angle);
-    tree(t,size-15,angle);
-    t.left(angle*2);
-    tree(t,size-15,angle);
-    t.right(angle);
-    t.backward(size);
-    
-  }
-   
 }
