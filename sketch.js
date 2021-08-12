@@ -32,6 +32,8 @@ function draw() {
   
 }
 
+// koch curve
+
 function koch(t, order, size){
   if (order == 0){
     t.forward(size);
@@ -49,7 +51,7 @@ function koch(t, order, size){
 }
 
 
-
+// cauliflower
 
 function cauliflower(t, order,size){
   
@@ -66,7 +68,5 @@ function cauliflower(t, order,size){
     t.right(45);
   }
   
-  
-  
-  
 }
+
