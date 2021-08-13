@@ -3,6 +3,7 @@ let cbox;
 let kbox;
 let pbox;
 let bbox;
+let sbox;
 
 function setup() {
   
@@ -12,6 +13,7 @@ function setup() {
   cbox = createCheckbox('cauliflower',true);
   pbox = createCheckbox('Escher penguin (only box checked)',false);
   bbox = createCheckbox('cauli-bug (only box checked)',false);
+  sbox = createCheckbox('Koch snowflake (only box checked)', false);
   angleMode(DEGREES);// need angle mode set to degrees
  // create a red gurtle named greg in the center of the canvas
   greg = new Gurtle(width/4,height/2,color(0,255,0));
@@ -45,23 +47,33 @@ function draw() {
     koch(greg,klevel,600)
   }
 
-  if (pbox.checked() && !kbox.checked() && !cbox.checked() && !bbox.checked()){
+  if (pbox.checked() && !kbox.checked() && !cbox.checked() && !bbox.checked() && !sbox.checked()){
     // position and color of penguin
     greg.clr = color('yellow');
     greg.angle =0
     greg.x = width/2;
-    greg.y =height/3;
+    greg.y =height/2;
     penguin(greg,plevel,100);
 
   }
 
-  if (bbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked()){
+  if (bbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !sbox.checked()){
     // position and color of caulibug
     greg.clr = color('orange');
     greg.angle =0
     greg.x = width/4;
     greg.y =height/4;
     caulibug(greg,clevel,200);
+  }
+
+
+  if (sbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !pbox.checked()){
+    // position and color of snowflake
+    greg.clr = color('orange');
+    greg.angle =0
+    greg.x = width/5;
+    greg.y =height/3;
+    snowflake(greg,klevel,400);
   }
 }
 
@@ -134,5 +146,20 @@ function caulibug(t,level,size){
   cauliflower(t,level,size);
   t.right(60);
   cauliflower(t,level,size);
+
+}
+
+
+
+// snowflake is three calls to koch
+// my left and right for koch are reversed to
+// the books, but makes a point about directions
+
+function snowflake(t, level,size){
+  koch(t,level,size);
+  t.right(120);
+  koch(t,level,size);
+  t.right(120);
+  koch(t,level,size);
 
 }
