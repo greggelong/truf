@@ -31,3 +31,7 @@ https://greggelong.github.io/koch/
 and more on fractals and l-systems
 
 https://greggelong.github.io/L-systems/
+
+and more on complexity and fractals at:
+
+https://github.com/greggelong/complexity
