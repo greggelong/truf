@@ -4,6 +4,7 @@ let kbox;
 let pbox;
 let bbox;
 let sbox;
+let dbox;
 
 function setup() {
   
@@ -14,6 +15,7 @@ function setup() {
   pbox = createCheckbox('Escher penguin (only box checked)',false);
   bbox = createCheckbox('cauli-bug (only box checked)',false);
   sbox = createCheckbox('Koch snowflake (only box checked)', false);
+  dbox = createCheckbox('Dragon curve (only box checked', false);
   angleMode(DEGREES);// need angle mode set to degrees
  // create a red gurtle named greg in the center of the canvas
   greg = new Gurtle(width/4,height/2,color(0,255,0));
@@ -47,7 +49,7 @@ function draw() {
     koch(greg,klevel,600)
   }
 
-  if (pbox.checked() && !kbox.checked() && !cbox.checked() && !bbox.checked() && !sbox.checked()){
+  if (pbox.checked() && !kbox.checked() && !cbox.checked() && !bbox.checked() && !sbox.checked() && !dbox.checked()){
     // position and color of penguin
     greg.clr = color('yellow');
     greg.angle =0
@@ -57,7 +59,7 @@ function draw() {
 
   }
 
-  if (bbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !sbox.checked()){
+  if (bbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !sbox.checked() && !dbox.checked()){
     // position and color of caulibug
     greg.clr = color('orange');
     greg.angle =0
@@ -67,13 +69,23 @@ function draw() {
   }
 
 
-  if (sbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !pbox.checked()){
+  if (sbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !pbox.checked() && !dbox.checked()){
     // position and color of snowflake
     greg.clr = color('orange');
     greg.angle =0
     greg.x = width/5;
     greg.y =height/3;
     snowflake(greg,klevel,400);
+  }
+
+
+  if (dbox.checked() && !kbox.checked() && !cbox.checked() && !pbox.checked() && !pbox.checked() && !sbox.checked()){
+    // position and color of snowflake
+    greg.clr = color('orange');
+    greg.angle =0
+    greg.x = width/5;
+    greg.y =height/3;
+    dragon(greg,clevel,25, 45); // using the same level map as cauliflower
   }
 }
 
@@ -161,5 +173,27 @@ function snowflake(t, level,size){
   koch(t,level,size);
   t.right(120);
   koch(t,level,size);
+
+}
+
+
+// heighway's dragon
+// help from rosetta code  seeing some of the best solutions
+// rosettacode.org/wiki/Dragon_curve
+
+function dragon(t, level, size, direction){
+  if (level == 0){
+    t.forward(size);
+
+  } else{
+     
+    t.right(direction);
+    dragon(t,level -1 ,size/1.141, 45);
+    t.left(direction *2);
+    dragon(t,level -1, size/1.141, -45);
+    t.right(direction);
+
+  }
+
 
 }
