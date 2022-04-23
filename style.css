@@ -4,6 +4,8 @@ html, body {
   background: black;
   color:chartreuse;
   font-size: large;
+  text-align: center;
+  font-family: monospace
 }
 canvas {
   display: block;
