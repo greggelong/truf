@@ -35,3 +35,7 @@ https://greggelong.github.io/L-systems/
 and more on complexity and fractals at:
 
 https://github.com/greggelong/complexity
+
+an animated paper folding dragon at:
+
+https://greggelong.github.io/paperDragon/
